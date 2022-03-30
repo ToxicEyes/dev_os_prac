@@ -1,0 +1,288 @@
+
+1--------------------------------
+
+echo "Enter Marks Of A:"
+read m1
+echo "Enter Marks of B:"
+read m2
+if [ $m1 -gt $m2 ]
+then 
+  echo "A is Greater Than B"
+elif [ $m1 == $m2 ]
+then 
+  echo "A is Equal To B"
+else
+  echo "B is Greater Than A"
+fi
+___________________________________
+
+2------------------------------------
+
+-->Use any one method of this four.
+
+
+echo "Enter A:"
+read a
+echo "Enter B:"
+read b
+
+echo "Sum:"
+echo $(( $a + $b ))
+sUm=`expr $a + $b`
+echo $sUm
+Sum=$((a+b))
+echo $Sum
+((sum=a+b))
+echo $sum
+
+echo "Sub:"
+echo $(( $a - $b ))
+Sub=$((a-b))
+sUb=`expr $a - $b`
+echo $sUb
+echo $Sub
+((sub=a-b))
+echo $sub
+
+echo "Multi:"
+echo $(( $a * $b ))
+mUlti=`expr $a * $b`
+echo $mUlti
+Multi=$((a*b))
+echo $Multi
+((multi=a*b))
+echo $multi
+
+echo "Div:"
+echo $(( $a / $b ))
+dIv=`expr $a / $b`
+echo $dIv
+Div=$((a/b))
+echo $Div
+((div=a/b))
+echo $div
+
+echo "Modulus:"
+echo $(( $a % $b ))
+mOd=`expr $a % $b`
+echo $mOd
+Mod=$((a%b))
+echo $Mod
+((mod=a%b))
+echo $mod
+
+-----Arithmetic Operations using CASE----------
+
+
+echo "Enter A:"
+read a
+echo "Enter B:"
+read b 
+
+echo "----------MENU-----------"
+echo "1.Addition"
+echo "2.Subtraction"
+echo "3.Multiplication"
+echo "4.Division"
+echo "5.Modulus"
+echo "------------------------"
+echo "Enter Your Choice:"
+read choice
+
+case $choice in
+1)echo "Addition of A and B is:"
+  echo $(( $a + $b ))
+;;
+
+2)echo "Subtraction of A and B is:"
+  echo $(( $a - $b ))
+;;
+
+3)echo "Multiplication of A and B is:"
+  echo $(( $a * $b ))
+;;
+
+4)echo "Division of A and B is:"
+  echo $(( $a / $b ))
+;;
+
+5)echo "Modulus is:"
+  echo $(( $a % $b ))
+;;
+
+*)
+echo "Invalid Choice"
+;;
+esac
+_______________________________________________
+
+
+3---------------------------------------------
+
+-->Student Marksheet using if..elif..else
+
+
+echo "Enter Your Marks out of 100"
+echo "Enter Marks of Subject-1:"
+read m1
+echo "Enter Marks Of Subject-2:"
+read m2
+echo "Enter Marks Of Subject-3:"
+read m3
+
+total=$((m1+m2+m3))
+perc=$(((total*100)/300))
+avg=$((total/3))
+echo "Total Marks:$total"
+echo "Percentage: $perc %"
+echo "Average Marks: $avg"
+
+if [ $m1 -ge 35 ] && [ $m2 -ge 35 ] && [ $m3 -ge 35 ]
+then  
+  echo "Result:Pass"
+fi
+
+if [ $avg -ge 80 ] && [ $avg -le 100 ]
+then 
+  echo "Result:distinction"
+elif [ $avg -ge 61 ] && [ $avg -le 79 ]
+then 
+  echo "Result:First Class"
+elif [ $avg -ge 35 ] && [ $avg -le 60 ]
+then 
+  echo "Result:Second class"
+else
+echo "Result:Fail"
+fi
+
+-->Student Marksheet using Nested If..else
+echo "Enter Your Marks out of 100"
+echo "Enter Marks of Subject-1:"
+read m1
+echo "Enter Marks Of Subject-2:"
+read m2
+echo "Enter Marks Of Subject-3:"
+read m3
+
+total=$((m1+m2+m3))
+perc=$(((total*100)/300))
+avg=$((total/3))
+echo "Total Marks:$total"
+echo "Percentage: $perc %"
+echo "Average Marks: $avg"
+
+if [ $m1 -ge 35 ] && [ $m2 -ge 35 ] && [ $m3 -ge 35 ]
+then  
+   if [ $avg -ge 80 ] && [ $avg -le 100 ]
+    then 
+    echo "Result:Pass;distinction"
+  elif [ $avg -ge 61 ] && [ $avg -le 79 ]
+    then 
+    echo "Result:Pass;First Class"
+  elif [ $avg -ge 35 ] && [ $avg -le 60 ]
+    then 
+    echo "Result:Pass;Second class"
+  fi
+else
+  echo "Result:Fail"
+fi
+
+
+-------------------------------------------
+
+->find factorial of given number(using while loop)
+
+echo "Enter a number:"
+read num
+fact=1;
+while [ $num -gt 0 ]
+do
+((fact=fact*num))
+((num=num-1))
+done
+echo "Factorial of Number is $fact"
+
+
+-->fibonacci series (using for loop)
+
+echo "Enter Total Number of Elements:"
+read n
+n1=0
+n2=1
+
+
+echo "Fibonacci Series..."
+echo "$n1"
+echo "$n2"
+for ((i=2;i<n;i++))
+do
+((n3=n2+n1))
+echo "$n3"
+((n1=n2))
+((n2=n3))
+done
+
+
+-->Prime Number
+echo "Enter A number:"
+read num
+
+i=2
+counter=0
+
+while [ $i -le `expr $num / 2` ]
+do
+if [ `expr $num % $i` -eq 0 ]
+then
+counter=1
+fi
+((i=i+1))
+done
+
+if [ $counter -eq 1 ]
+then
+echo "The $num is not prime number"
+else
+echo "The $num is prime number"
+fi
+
+
+
+->Print multiplication table of given number
+
+echo "Enter a Number:"
+read num
+
+i=1;
+
+while [ $i -le 10 ]
+do
+((result=num*i))
+echo "$num * $i = $result"
+((i=i+1))
+done
+
+
+-->find given number is odd or even
+
+echo "Enter a Number:"
+read num
+
+if [ `expr $num % 2` -eq 0 ]
+then
+echo "Even Number"
+else
+echo "Odd Number"
+fi
+
+
+-->find given year is leap year or not
+echo "Enter a Year:"
+read year
+
+if [ `expr $year % 4` -eq 0 ]
+then
+echo "Leap Year"
+else
+echo "Not Leap Year"
+fi
