@@ -275,6 +275,28 @@ else
 echo "Odd Number"
 fi
 
+-->Display calendar of current month
+
+
+echo "Enter Your Name:-"
+read name
+echo "Enter Your Enrollment No:-"
+read e_no
+echo "------Menu-----"
+echo "1.Display calender of current month"
+echo "2.Display today date and time"
+echo "3.Display Your terminal number"
+echo "Enter choice:"
+read choice
+case "$choice" in
+1) echo "$(cal)"
+;;
+2) echo "$(date)"
+;;
+3) echo "$(tty)"
+;;
+esac
+
 
 -->find given year is leap year or not
 echo "Enter a Year:"
@@ -285,4 +307,216 @@ then
 echo "Leap Year"
 else
 echo "Not Leap Year"
+fi
+
+-->b.	Display today’s date and time
+
+echo "Enter Your Name:-"
+read name
+echo "Enter Your Enrollment No:-"
+read e_no
+echo "------Menu-----"
+echo "1.Display calender of current month"
+echo "2.Display today date and time"
+echo "3.Display Your terminal number"
+echo "Enter choice:"
+read choice
+case "$choice" in
+1) echo "$(cal)"
+;;
+2) echo "$(date)"
+;;
+3) echo "$(tty)"
+;;
+esac
+
+-->	Display your terminal number
+
+echo "Enter Your Name:-"
+read name
+echo "Enter Your Enrollment No:-"
+read e_no
+echo "------Menu-----"
+echo "1.Display calender of current month"
+echo "2.Display today date and time"
+echo "3.Display Your terminal number"
+echo "Enter choice:"
+read choice
+case "$choice" in
+1) echo "$(cal)"
+;;
+2) echo "$(date)"
+;;
+3) echo "$(tty)"
+;;
+esac
+
+-->Write a shell script to validate the entered date.
+
+
+echo "Enter Your Name:-"
+read name
+echo "Enter Your Enrollment No:-"
+read e_no
+
+dd=0
+mm=0 
+yy=0 
+days=0 
+
+echo -n "Enter day (dd) : "
+read dd 
+echo -n "Enter month (mm) :"
+read mm
+echo -n "Enter year (yyyy) :"
+read yy 
+
+if [ $mm -le 0 -o $mm -gt 12 ];
+then 
+   echo "$mm is invalid month."
+   exit 1
+fi
+
+case "$mm" in
+1) days=31;;
+2) days=28;;
+3) days=31;;
+4) days=30;;
+5) days=31;;
+6) days=30;;
+7) days=31;;
+8) days=31;;
+9) days=30;;
+10) days=31;;
+11) days=30;;
+12) days=31;;
+*) days=-1;;
+esac
+
+if [ $mm -eq 2 ];
+then 
+ if [ $((yy%4)) -ne 0 ] ; then 
+    :
+ elif [ $((yy%400)) -eq 0 ]; then
+      
+      days=29
+ elif [ $((yy%100)) -eq 0 ]; then
+      :
+      else 
+       
+      days=29
+     fi
+fi
+
+
+if [ $dd -le 0 -o $dd -gt $days ];
+then 
+    echo "$dd day is invalid"
+    exit 3
+fi
+ 
+echo "$dd/$mm/$yy is a valid date "
+
+
+-->i)	Program to sort given numbers in ascending order.
+
+echo "Enter Your Name:-"
+read name
+echo "Enter Your Enrollment No:-"
+read e_no
+arr=(90 25 99 100 70)
+echo "Array in original order"
+echo ${arr[*]}
+for ((i = 0; i<5; i++))
+do
+  for((j = 0; j<5-i-1; j++))
+    do
+     if [ ${arr[j]} -gt ${arr[$((j+1))]} ]
+        then
+            temp=${arr[j]}
+            arr[$j]=${arr[$((j+1))]}  
+            arr[$((j+1))]=$temp
+        fi
+    done
+done
+echo "Array in sorted order :"
+echo ${arr[*]}
+
+
+-->ii)	Program to sort given numbers in descending order.
+
+echo "Enter Your Name:-"
+read name
+echo "Enter Your Enrollment No:-"
+read e_no
+
+arr=( 92 25 99 100 70)
+echo "Array in original order"
+echo ${arr[*]}
+for ((i = 0; i<5; i++))
+do
+  for((j = 0; j<5-i-1; j++))
+    do
+     if [ ${arr[j]} -lt ${arr[$((j+1))]} ]
+        then
+            temp=${arr[j]}
+            arr[$j]=${arr[$((j+1))]}  
+            arr[$((j+1))]=$temp
+        fi
+    done
+done
+echo "Array in sorted order :"
+echo ${arr[*]}
+
+-->iii)	Program to find sum of digit
+
+echo "Enter Your Name:-"
+read name
+echo "Enter Your Enrollment No:-"
+read e_no
+
+echo "Numbers in original order"
+echo "enter a number"
+read num
+sum=0 
+while [ $num -gt 0 ]
+do 
+mod=`expr $num % 10 `
+sum=`expr $sum + $mod`
+num=`expr $num / 10`
+done 
+echo $sum
+
+-->to reverse the given string. 
+
+echo "Enter Your Name:-"
+read name
+echo "Enter Your Enrollment No:-"
+read e_no
+str="Dev Pathak"
+copy=${str}
+len=${#copy}
+for ((i=$len-1; i>=0; i-- ))
+do rev="$rev${copy:$i:1}"
+done
+echo "str: $str, rev: $rev"
+
+-->to check given string is palindrome or not.
+
+echo "Enter Your Name:-"
+read name
+echo "Enter Your Enrollment No:-"
+read e_no
+
+echo "Input the string without space"
+read str
+for i in $(seq 0 ${#str}) ; do
+        revstr=${str:$i:1}$revstr
+done
+echo "The given string is " $str
+echo "Its reverse is " $revstr
+if [ "$str" = "$revstr" ]; then
+        echo "It is a palindrome."
+else
+        echo "It is not a palindrome."
 fi
